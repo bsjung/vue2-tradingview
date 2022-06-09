@@ -8,7 +8,7 @@ const options = {
 };
 
 class socket {
-  constructor(url = 'wss://www.aisiex.com:2000', options = options) {
+  constructor(url = 'wss://www.aisiex.com:2000', options) {
     this.heartBeatTimer = null
     this.options = options
     this.messageMap = {}
