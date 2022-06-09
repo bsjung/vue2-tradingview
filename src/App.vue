@@ -5,14 +5,14 @@
 </template>
 
 <script>
-import TradeView from './components/TradeView'
+import TradeView from './components/TVChartContainer'
 export default {
   name: 'app',
   components: {
     TradeView
   },
   mounted() {
-    this.$refs.trade.init('BTCUSDT', 5)
+    this.$refs.trade.init('Coinbase:BTC/USD', 5)
   }
 }
 </script>
