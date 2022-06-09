@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "request-promise": "^4.2.6",
     "socket.io-client": "^2.1.1",
     "vue": "~2.5.17"
@@ -19,7 +20,6 @@
     "babel-core": "6.26.3",
     "babel-loader": "7.1.5",
     "node-sass": "^7.0.1",
-    "reconnecting-websocket": "^4.4.0",
     "sass-loader": "^13.0.0",
     "style-loader": "~0.23.1",
     "vue-template-compiler": "~2.5.17"
