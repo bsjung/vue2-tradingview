@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <trade-view ref="trade"></trade-view>
+    <trading-view ref="trade"></trading-view>
   </div>
 </template>
 
 <script>
-import TradeView from './components/TVChartContainer'
+import TradingView from './components/TradingView'
 export default {
   name: 'app',
   components: {
-    TradeView
+    TradingView
   },
   mounted() {
     this.$refs.trade.init('Coinbase:BTC/USD', 5)
