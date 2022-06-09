@@ -1,6 +1,4 @@
-var rp = require('request-promise').defaults({json: true})
-
-const api_root = 'https://min-api.cryptocompare.com'
+import axios from "../../helpers/http";
 const history = {}
 
 export default {
@@ -8,21 +6,19 @@ export default {
 
     getBars: async function(symbolInfo, resolution, from, to, first, limit) {
 		var split_symbol = symbolInfo.name.split(/[:/]/)
-			const url = resolution === 'D' ? '/data/histoday' : resolution >= 60 ? '/data/histohour' : '/data/histominute'
-			const qs = {
-					e: split_symbol[0],
-					fsym: split_symbol[1],
-					tsym: split_symbol[2],
-					toTs:  to ? to : '',
-					limit: limit ? limit : 2000, 
-					// aggregate: 1//resolution 
-				}
-			// console.log({qs})
+		const url = resolution === 'D' ? '/data/histoday' : resolution >= 60 ? '/data/histohour' : '/data/histominute'
+		const qs = {
+				e: split_symbol[0],
+				fsym: split_symbol[1],
+				tsym: split_symbol[2],
+				toTs:  to ? to : '',
+				limit: limit ? limit : 2000, 
+				// aggregate: 1//resolution 
+			}
+		// console.log({qs})
 
-        const data = await rp({
-			url: `${api_root}${url}`,
-			qs,
-		})
+        const ret = await axios().get(url, {params : qs});
+        const data = ret.data;
 		console.log({ data })
 		if (data.Response && data.Response === 'Error') {
 			console.log('CryptoCompare API error:', data.Message)

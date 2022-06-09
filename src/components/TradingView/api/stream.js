@@ -2,7 +2,7 @@
 import historyProvider from './historyProvider.js'
 // we use Socket.io client to connect to cryptocompare's socket.io stream
 import io from "socket.io-client"
-let socket_url = 'wss://streamer.cryptocompare.com'
+let socket_url = process.env.VUE_APP_SOCKET
 let socket_options = {
   'reconnection': true,
   'reconnectionDelay': 500,
