@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "request-promise": "^4.2.6",
     "socket.io-client": "^2.1.1",
     "vue": "~2.5.17"
   },
