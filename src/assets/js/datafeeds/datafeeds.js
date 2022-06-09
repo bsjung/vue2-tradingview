@@ -6,7 +6,7 @@ class datafeeds {
 
   /**
    * JS API
-   * @param {*Object} vue vue实例
+   * @param {*Object} vue
    */
   constructor(vue) {
     this.self = vue
@@ -14,7 +14,7 @@ class datafeeds {
   }
 
   /**
-   * @param {*Function} callback  回调函数
+   * @param {*Function} callback  
    * `onReady` should return result asynchronously.
    */
   onReady(callback) {
@@ -28,9 +28,9 @@ class datafeeds {
   }
 
   /**
-   * @param {*String} symbolName  商品名称或ticker
-   * @param {*Function} onSymbolResolvedCallback 成功回调 
-   * @param {*Function} onResolveErrorCallback   失败回调
+   * @param {*String} symbolName 
+   * @param {*Function} onSymbolResolvedCallback
+   * @param {*Function} onResolveErrorCallback
    * `resolveSymbol` should return result asynchronously.
    */
   resolveSymbol(symbolName, onSymbolResolvedCallback, onResolveErrorCallback) {
@@ -44,12 +44,12 @@ class datafeeds {
   }
 
   /**
-   * @param {*Object} symbolInfo  商品信息对象
-   * @param {*String} resolution  分辨率
-   * @param {*Number} rangeStartDate  时间戳、最左边请求的K线时间
-   * @param {*Number} rangeEndDate  时间戳、最右边请求的K线时间
-   * @param {*Function} onDataCallback  回调函数
-   * @param {*Function} onErrorCallback  回调函数
+   * @param {*Object} symbolInfo
+   * @param {*String} resolution
+   * @param {*Number} rangeStartDate
+   * @param {*Number} rangeEndDate
+   * @param {*Function} onDataCallback
+   * @param {*Function} onErrorCallback
    */
   getBars(symbolInfo, resolution, rangeStartDate, rangeEndDate, onDataCallback, onErrorCallback) {
     const onLoadedCallback = data => {
@@ -59,27 +59,26 @@ class datafeeds {
   }
 
   /**
-   * 订阅K线数据。图表库将调用onRealtimeCallback方法以更新实时数据
-   * @param {*Object} symbolInfo 商品信息
-   * @param {*String} resolution 分辨率
-   * @param {*Function} onRealtimeCallback 回调函数 
-   * @param {*String} subscriberUID 监听的唯一标识符
-   * @param {*Function} onResetCacheNeededCallback (从1.7开始): 将在bars数据发生变化时执行
+   * onRealtimeCallback
+   * @param {*Object} symbolInfo
+   * @param {*String} resolution
+   * @param {*Function} onRealtimeCallback
+   * @param {*String} subscriberUID
+   * @param {*Function} onResetCacheNeededCallback
    */
   subscribeBars(symbolInfo, resolution, onRealtimeCallback, subscriberUID, onResetCacheNeededCallback) {
     this.barsUpdater.subscribeBars(symbolInfo, resolution, onRealtimeCallback, subscriberUID, onResetCacheNeededCallback)
   }
 
   /**
-   * 取消订阅K线数据
-   * @param {*String} subscriberUID 监听的唯一标识符
+   * @param {*String} subscriberUID 
    */
   unsubscribeBars(subscriberUID) {
     this.barsUpdater.unsubscribeBars(subscriberUID)
   }
 
   /**
-   * 默认配置
+   * Config
    */
   defaultConfiguration() {
     return {
@@ -93,12 +92,12 @@ class datafeeds {
   }
 
   /**
-   * 默认商品信息
+   * Symbol
    */
   defaultSymbol() {
     return {
       'name': 'BTC_USDT',
-      'timezone': 'Asia/Shanghai',
+      'timezone': 'Asia/Seoul',
       'minmov': 1,
       'minmov2': 0,
       'pointvalue': 1,

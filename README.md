@@ -4,4 +4,4 @@
 
 1. Install dependencies `npm install`.
 
-1. Run `npm run serve`. 
+1. Run `npm run start`. 

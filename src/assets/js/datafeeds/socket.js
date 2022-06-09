@@ -1,5 +1,14 @@
+import ReconnectingWebSocket from 'reconnecting-websocket';
+import WS from 'ws';
+ 
+const options = {
+    WebSocket: WS, // custom WebSocket constructor
+    connectionTimeout: 1000,
+    maxRetries: 10,
+};
+
 class socket {
-  constructor(url = 'wss://www.aisiex.com:2000', options) {
+  constructor(url = 'wss://www.aisiex.com:2000', options = options) {
     this.heartBeatTimer = null
     this.options = options
     this.messageMap = {}
@@ -11,8 +20,7 @@ class socket {
     if (this.connState) return
     this.connState = 1
     this.afterOpenEmit = []
-    const BrowserWebSocket = window.WebSocket || window.MozWebSocket
-    const socket = new BrowserWebSocket(this.url)
+    const socket = new ReconnectingWebSocket(this.url, null, this.options)
     socket.binaryType = 'arraybuffer'
     socket.onopen = evt => this.onOpen(evt)
     socket.onclose = evt => this.onClose(evt)

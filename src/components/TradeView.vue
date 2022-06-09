@@ -5,7 +5,7 @@
 <script>
 import { widget } from '../assets/js/charting_library.min';
 import socket from '../assets/js/datafeeds/socket';
-import datafeeds from '../assets/js/datafeeds/datafees';
+import datafeeds from '../assets/js/datafeeds/datafeeds';
 
 export default {
   data() {
@@ -48,8 +48,8 @@ export default {
           library_path: '/static/charting_library/',
           disabled_features: ['header_symbol_search'],
           enabled_features: [],
-          timezone: 'Asia/Shanghai',
-          locale: 'zh',
+          timezone: 'Asia/Seoul',
+          locale: 'ko',
           debug: false
         })
         this.symbol = symbol
