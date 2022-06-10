@@ -74,7 +74,6 @@ export default {
 	},
 	unsubscribeBars: subscriberUID => {
 		console.log('=====unsubscribeBars running')
-
 		stream.unsubscribeBars(subscriberUID)
 	},
 	calculateHistoryDepth: (resolution, resolutionBack, intervalBack) => {
@@ -93,6 +92,7 @@ export default {
 		console.log('=====getTimeScaleMarks running')
 	},
 	getServerTime: cb => {
+		//optional
 		console.log('=====getServerTime running')
 	}
 }

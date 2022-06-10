@@ -27,6 +27,7 @@ export default {
   }
   _subs.push(newSub)
  },
+ 
  unsubscribeBars: function(uid) {
   var subIndex = _subs.findIndex(e => e.uid === uid)
   if (subIndex === -1) {
@@ -42,12 +43,15 @@ export default {
 socket.on('connect', () => {
  console.log('[DEBUG] Socket connected')
 })
+
 socket.on('disconnect', (e) => {
  console.log('[DEBUG] Socket disconnected:', e)
 })
+
 socket.on('error', err => {
  console.log('[DEBUG] Socket error', err)
 })
+
 socket.on('m', (e) => {
  // here we get all events the CryptoCompare connection has subscribed to
  // we need to send this new data to our subscribed charts
@@ -67,22 +71,19 @@ socket.on('m', (e) => {
   price: parseFloat(_data[8])
  }
  
- const channelString = `${data.sub_type}~${data.exchange}~${data.to_sym}~${data.from_sym}`
- 
- const sub = _subs.find(e => e.channelString === channelString)
+ const channelString = `${data.sub_type}~${data.exchange}~${data.to_sym}~${data.from_sym}`;
+ const sub = _subs.find(e => e.channelString === channelString);
  
  if (sub) {
   // disregard the initial catchup snapshot of trades for already closed candles
-  if (data.ts < sub.lastBar.time / 1000) {
-    return
-   }
+  if (data.ts < sub.lastBar.time / 1000) return;
   
-var _lastBar = updateBar(data, sub)
+  var _lastBar = updateBar(data, sub);
 
-// send the most recent bar back to TV's realtimeUpdate callback
-  sub.listener(_lastBar)
+  // send the most recent bar back to TV's realtimeUpdate callback
+  sub.listener(_lastBar);
   // update our own record of lastBar
-  sub.lastBar = _lastBar
+  sub.lastBar = _lastBar;
  }
 })
 
